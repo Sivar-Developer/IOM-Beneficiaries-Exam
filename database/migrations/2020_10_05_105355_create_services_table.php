@@ -15,6 +15,16 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
+            $table->timestamps();
+        });
+
+        Schema::create('beneficiary_service', function (Blueprint $table) {
+            $table->foreignId('beneficiary_id');
+            $table->foreignId('service_id');
+            $table->foreign('beneficiary_id')->references('id')->on('beneficiaries')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('services')->onUpdate('cascade')->onDelete('cascade');
+            $table->enum('mark', ['Ongoing','Cancelled','Delivered'])->default('Ongoing');
             $table->timestamps();
         });
     }

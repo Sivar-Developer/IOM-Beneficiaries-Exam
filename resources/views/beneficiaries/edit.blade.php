@@ -40,7 +40,11 @@
                         </div>
                         <div class="form-group row">
                             <label for="martial_status" class="col-3 form-control-label{{ $errors->has('martial_status') ? ' text-danger' : '' }}">Martial Status</label>
-                            <input type="text" class="col-9 form-control round{{ $errors->has('martial_status') ? ' is-invalid' : '' }}" name="martial_status" value="{{ old('martial_status') ? old('martial_status') : $beneficiary->martial_status }}">
+                                <select class="col-9 form-control round{{ $errors->has('martial_status') ? ' is-invalid' : '' }}" name="martial_status">
+                                    @foreach(['Single','Married','Divorced'] as $status)
+                                        <option value="{{ $status }}" {{ (old('martial_status') ? old('martial_status') : $beneficiary->martial_status) == $status ? 'selected' : '' }}>{{ $status }}</option>
+                                    @endforeach
+                                </select>
                         </div>
                         <div class="form-group row">
                             <label for="employment_status" class="col-3 form-control-label{{ $errors->has('employment_status') ? ' text-danger' : '' }}">Employment Status</label>
