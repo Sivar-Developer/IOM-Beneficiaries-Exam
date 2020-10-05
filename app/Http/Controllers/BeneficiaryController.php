@@ -14,7 +14,7 @@ class BeneficiaryController extends Controller
      */
     public function index()
     {
-        //
+        return view('beneficiaries.index');
     }
 
     /**
