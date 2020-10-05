@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Beneficiary;
 use Illuminate\Http\Request;
 use DataTables;
+use Hash;
+use Auth;
 
 class BeneficiaryController extends Controller
 {
@@ -90,8 +92,13 @@ class BeneficiaryController extends Controller
      * @param  \App\Beneficiary  $beneficiary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Beneficiary $beneficiary)
+    public function destroy(Request $request,Beneficiary $beneficiary)
     {
-        //
+        if(Hash::check(request('password'), Auth::user()->password)) {
+            $beneficiary->delete();
+            return redirect()->route('beneficiaries.index')->with('msg','Beneficiary has been Deleted');
+        } else {
+            return redirect()->route('beneficiaries.index')->with('error','Unauthorized action due to incorrect credentials');
+        }
     }
 }

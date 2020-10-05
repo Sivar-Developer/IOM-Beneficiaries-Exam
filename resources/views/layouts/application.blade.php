@@ -76,6 +76,7 @@
 
     <div class="page">
 
+      @include('layouts.partials.alert')
         @yield('content')
 
     </div>

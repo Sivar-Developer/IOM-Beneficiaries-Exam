@@ -93,23 +93,18 @@
   <div class="site-menubar">
     <ul class="site-menu">
       <li class="site-menu-item has-sub">
-        <a href="javascript:void(0)">
-                <i class="site-menu-icon wb-dashboard" aria-hidden="true"></i>
-                <span class="site-menu-title">Beneficiaries</span>
+        <a href="{{ route('beneficiaries.index') }}">
+                <i class="site-menu-icon wb-users" aria-hidden="true"></i>
+                <span class="site-menu-title">Beneficiaries List</span>
                         <span class="site-menu-arrow"></span>
             </a>
-        <ul class="site-menu-sub">
-          <li class="site-menu-item">
-            <a class="animsition-link" href="{{ route('beneficiaries.index') }}">
-              <span class="site-menu-title">Beneficiaries List</span>
+      </li>
+      <li class="site-menu-item has-sub">
+        <a href="{{ route('beneficiaries.create') }}">
+                <i class="site-menu-icon wb-user-add" aria-hidden="true"></i>
+                <span class="site-menu-title">Add New Beneficiary</span>
+                        <span class="site-menu-arrow"></span>
             </a>
-          </li>
-          <li class="site-menu-item">
-            <a class="animsition-link" href="#">
-              <span class="site-menu-title">Add New Beneficiary</span>
-            </a>
-          </li>
-        </ul>
       </li>
 
     </ul></div>    

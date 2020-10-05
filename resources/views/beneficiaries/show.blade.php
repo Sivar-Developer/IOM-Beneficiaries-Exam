@@ -18,7 +18,7 @@
                         <div class="col-sm-3 mb-20 font-weight-600">Name:</div>
                         <div class="col-sm-9 mb-20">{{ $beneficiary->name }}</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Birthdate:</div>
-                        <div class="col-sm-9 mb-20">{{ $beneficiary->birthdate }}</div>
+                        <div class="col-sm-9 mb-20">{{ $beneficiary->birthdate }} (Age: {{ $beneficiary->age }})</div>
                         <div class="col-sm-3 mb-20 font-weight-600">gender:</div>
                         <div class="col-sm-9 mb-20">{{ $beneficiary->gender }}</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Martial Status:</div>
@@ -36,7 +36,7 @@
                         <div class="col-sm-3 mb-20 font-weight-600">Monthly Income:</div>
                         <div class="col-sm-9 mb-20">{{ $beneficiary->monthly_income }}</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Score:</div>
-                        <div class="col-sm-9 mb-20">N/A</div>
+                        <div class="col-sm-9 mb-20">{{ $beneficiary->score }}</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Created At:</div>
                         <div class="col-sm-9 mb-20">{{ $beneficiary->created_at }} ({{ $beneficiary->created_at ? $beneficiary->created_at->diffForHumans() : null }})</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Updated At:</div>
