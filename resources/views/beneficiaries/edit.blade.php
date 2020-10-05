@@ -24,7 +24,15 @@
                         </div>
                         <div class="form-group row">
                             <label for="gender" class="col-3 form-control-label{{ $errors->has('gender') ? ' text-danger' : '' }}">Gender</label>
-                            <input type="text" class="col-9 form-control round{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ old('gender') ? old('gender') : $beneficiary->gender }}">
+                            <div class="col-2 radio-custom radio-primary">
+                                <input type="radio" id="genderUnchecked" name="gender" value="1" {{ (old('gender') ? old('gender') : $beneficiary->gender) == true ? 'checked' : '' }} />
+                                <label for="genderUnchecked">Male</label>
+                            </div>
+                            <div class="col-3 radio-custom radio-primary">
+                                <input type="radio" id="genderChecked" name="gender" value="0" {{ (old('gender') ? old('gender') : $beneficiary->gender) == false ? 'checked' : '' }} />
+                                <label for="genderChecked">Female</label>
+                            </div>
+                            {{-- <input type="text" class="col-9 form-control round" name="gender" value="{{ old('gender') ? old('gender') : $beneficiary->gender }}"> --}}
                         </div>
                         <div class="form-group row">
                             <label for="phone_number" class="col-3 form-control-label{{ $errors->has('phone_number') ? ' text-danger' : '' }}">Phone Number</label>
@@ -32,7 +40,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="national_id_number" class="col-3 form-control-label{{ $errors->has('national_id_number') ? ' text-danger' : '' }}">National ID Number</label>
-                            <input type="text" class="col-9 form-control round{{ $errors->has('national_id_number') ? ' is-invalid' : '' }}" name="national_id_number" value="{{ old('national_id_number') ? old('national_id_number') : $beneficiary->national_id_number }}">
+                            <input type="number" min="0" class="col-9 form-control round{{ $errors->has('national_id_number') ? ' is-invalid' : '' }}" name="national_id_number" value="{{ old('national_id_number') ? old('national_id_number') : $beneficiary->national_id_number }}">
                         </div>
                         <div class="form-group row">
                             <label for="mother_name" class="col-3 form-control-label{{ $errors->has('mother_name') ? ' text-danger' : '' }}">Mother Name</label>
@@ -48,11 +56,21 @@
                         </div>
                         <div class="form-group row">
                             <label for="employment_status" class="col-3 form-control-label{{ $errors->has('employment_status') ? ' text-danger' : '' }}">Employment Status</label>
-                            <input type="text" class="col-9 form-control round{{ $errors->has('employment_status') ? ' is-invalid' : '' }}" name="employment_status" value="{{ old('employment_status') ? old('employment_status') : $beneficiary->employment_status }}">
+                            <div class="col-2 radio-custom radio-primary">
+                                <input type="radio" id="employment_statusUnchecked" name="employment_status" value="1" {{ (old('employment_status') ? old('employment_status') : $beneficiary->employment_status) == true ? 'checked' : '' }} />
+                                <label for="employment_statusUnchecked">Employed</label>
+                            </div>
+                            <div class="col-3 radio-custom radio-primary">
+                                <input type="radio" id="employment_statusChecked" name="employment_status" value="0" {{ (old('employment_status') ? old('employment_status') : $beneficiary->employment_status) == false ? 'checked' : '' }} />
+                                <label for="employment_statusChecked">Un-Employed</label>
+                            </div>
                         </div>
                         <div class="form-group row">
                             <label for="monthly_income" class="col-3 form-control-label{{ $errors->has('monthly_income') ? ' text-danger' : '' }}">Monthly Income</label>
-                            <input type="text" class="col-9 form-control round{{ $errors->has('monthly_income') ? ' is-invalid' : '' }}" name="monthly_income" value="{{ old('monthly_income') ? old('monthly_income') : $beneficiary->monthly_income }}">
+                            <div class="input-group round col-9">
+                                <span class="input-group-addon round">$</span>
+                                <input type="number" min="0" step="0.01" class="form-control round{{ $errors->has('monthly_income') ? ' is-invalid' : '' }}" name="monthly_income" value="{{ old('monthly_income') ? old('monthly_income') : $beneficiary->monthly_income }}">
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect waves-classic"><b>Update</b></button>
                         <a href="{{ route('beneficiaries.index') }}" class="btn btn-default waves-effect waves-classic"><b>Back</b></a>
