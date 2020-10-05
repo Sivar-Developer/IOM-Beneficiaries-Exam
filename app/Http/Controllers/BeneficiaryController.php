@@ -24,7 +24,7 @@ class BeneficiaryController extends Controller
 
     public function datatable()
     {
-        return DataTables::of(Beneficiary::query())
+        return DataTables::of(Beneficiary::all())
             ->setRowId('id')
             ->toJson();
     }
@@ -36,7 +36,7 @@ class BeneficiaryController extends Controller
      */
     public function create()
     {
-        //
+        return view('beneficiaries.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class BeneficiaryController extends Controller
      */
     public function show(Beneficiary $beneficiary)
     {
-        //
+        return view('beneficiaries.show', compact('beneficiary'));
     }
 
     /**
@@ -69,7 +69,7 @@ class BeneficiaryController extends Controller
      */
     public function edit(Beneficiary $beneficiary)
     {
-        //
+        return view('beneficiaries.edit', compact('beneficiary'));
     }
 
     /**

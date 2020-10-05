@@ -24,7 +24,7 @@ class CreateBeneficiariesTable extends Migration
             $table->enum('martial_status', ['Single','Married','Divorced'])->nullable();
             $table->boolean('employment_status')->nullable();
             $table->decimal('monthly_income',10,2)->nullable();
-            $table->text('beneficiary_photo')->nullable();
+            $table->text('photo')->nullable();
             $table->timestamps();
         });
     }
