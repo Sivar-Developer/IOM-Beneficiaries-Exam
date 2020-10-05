@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('datatable/beneficiaries', 'BeneficiaryController@datatable')->name('beneficiaries.datatable');
 Route::resource('/beneficiaries', 'BeneficiaryController');
+Route::patch('/beneficiaries/{beneficiary}/approved', 'ApprovalController@storeApprove')->name('beneficiaries.store.approved');
+Route::patch('/beneficiaries/{beneficiary}/rejected', 'ApprovalController@storeReject')->name('beneficiaries.store.rejected');

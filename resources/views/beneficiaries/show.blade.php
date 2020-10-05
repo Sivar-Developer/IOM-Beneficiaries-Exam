@@ -5,6 +5,8 @@
     <h1 class="page-title">Beneficiaries</h1>
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
+            @include('layouts.partials.alert')
+            @include('beneficiaries.approval', $beneficiary)
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">Beneficiary Detail</h3>

@@ -6,6 +6,7 @@
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             @include('layouts.partials.alert')
+            @include('beneficiaries.approval', $beneficiary)
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">Edit Beneficiary</h3>
@@ -32,7 +33,6 @@
                                 <input type="radio" id="genderChecked" name="gender" value="0" {{ (old('gender') ? old('gender') : $beneficiary->gender) == false ? 'checked' : '' }} />
                                 <label for="genderChecked">Female</label>
                             </div>
-                            {{-- <input type="text" class="col-9 form-control round" name="gender" value="{{ old('gender') ? old('gender') : $beneficiary->gender }}"> --}}
                         </div>
                         <div class="form-group row">
                             <label for="phone_number" class="col-3 form-control-label{{ $errors->has('phone_number') ? ' text-danger' : '' }}">Phone Number</label>

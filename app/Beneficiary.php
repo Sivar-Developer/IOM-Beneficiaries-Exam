@@ -31,4 +31,9 @@ class Beneficiary extends Model
     {
         return $this->employment_status == true ? 'Employed' : 'Un-Employed';
     }
+
+    public function Approval()
+    {
+        return $this->hasOne(Approval::class);
+    }
 }
