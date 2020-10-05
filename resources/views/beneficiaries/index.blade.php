@@ -26,9 +26,11 @@
                                 <th>ID</th>
                                 <th>Photo</th>
                                 <th>Name</th>
-                                <th>Birthdate</th>
+                                {{-- <th>Birthdate</th> --}}
                                 <th>Gender</th>
                                 <th>Martial Status</th>
+                                <th>Age</th>
+                                <th>Employment</th>
                                 <th>Phone Number</th>
                                 <th>Score</th>
                                 <th>Created At</th>
@@ -45,7 +47,7 @@
     </div>
 </div>
 
-    @foreach(App\Beneficiary::all() as $beneficiary)
+    @foreach(\App\Beneficiary::all() as $beneficiary)
         @include('beneficiaries.delete', $beneficiary)
     @endforeach
 
@@ -72,9 +74,11 @@ $(document).ready( function () {
             }
           },
           {data: 'name', name: 'name'},
-          {data: 'birthdate', name: 'birthdate'},
+        //   {data: 'birthdate', name: 'birthdate'},
           {data: 'gender', name: 'gender'},
           {data: 'martial_status', name: 'martial_status'},
+          {data: 'age', name: 'age'},
+          {data: 'employment', name: 'employment'},
           {data: 'phone_number', name: 'phone_number'},
           {data: 'score', name: 'score'},
           {data: 'created_at', name: 'created_at'},
@@ -84,9 +88,9 @@ $(document).ready( function () {
             orderable: false,
             render: function (data) {
               console.log(data)
-              return `<a href="/beneficiaries/${data}" class="btn btn-sm btn-light"><i class="icon wb-eye"></i> Details</a>
-                    <a href="/beneficiaries/${data}/edit" class="btn btn-sm btn-light"><i class="icon wb-pencil"></i> Edit</a>
-                    <button type="button" class="btn btn-sm btn-danger" title="Delete Beneficiary Permanently" data-target=".delete${data}" data-toggle="modal"><i class="icon wb-trash" aria-hidden="true"></i> Delete</button>
+              return `<a href="/beneficiaries/${data}" class="btn btn-sm btn-light"><i class="icon wb-eye"></i></a>
+                    <a href="/beneficiaries/${data}/edit" class="btn btn-sm btn-light"><i class="icon wb-pencil"></i></a>
+                    <button type="button" class="btn btn-sm btn-danger" title="Delete Beneficiary Permanently" data-target=".delete${data}" data-toggle="modal"><i class="icon wb-trash" aria-hidden="true"></i></button>
                     `
             }
           }

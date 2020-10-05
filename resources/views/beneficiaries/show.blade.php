@@ -32,7 +32,7 @@
                         <div class="col-sm-3 mb-20 font-weight-600">Martial Status:</div>
                         <div class="col-sm-9 mb-20">{{ $beneficiary->martial_status }}</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Employment Status:</div>
-                        <div class="col-sm-9 mb-20">{{ $beneficiary->employment_status }}</div>
+                        <div class="col-sm-9 mb-20">{{ $beneficiary->employment }}</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Monthly Income:</div>
                         <div class="col-sm-9 mb-20">{{ $beneficiary->monthly_income }}</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Score:</div>

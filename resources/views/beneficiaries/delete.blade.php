@@ -9,7 +9,7 @@
             <h4 class="modal-title" id="exampleOptionalSmall"><i class="icon ti-alert"></i>Delete Beneficiary</h4>
         </div>
         <div class="modal-body">
-            <p class="pt-10 text-default text-dark">Enter Your password below, and the beneficiary profile will be <b style="font-weight: bold;">Deleted Permanently</b></p>
+            <p class="pt-10 text-default text-dark">Enter Your password below, and the beneficiary profile <b>({{ $beneficiary->name }})</b> will be <b style="font-weight: bold;">Deleted Permanently</b></p>
             <form action="{{ route('beneficiaries.destroy',$beneficiary->id) }}" method="POST">
             @csrf
             @method('DELETE')
