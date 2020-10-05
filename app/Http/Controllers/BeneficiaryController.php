@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Beneficiary;
 use Illuminate\Http\Request;
+use DataTables;
 
 class BeneficiaryController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +20,13 @@ class BeneficiaryController extends Controller
     public function index()
     {
         return view('beneficiaries.index');
+    }
+
+    public function datatable()
+    {
+        return DataTables::of(Beneficiary::query())
+            ->setRowId('id')
+            ->toJson();
     }
 
     /**

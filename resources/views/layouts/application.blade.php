@@ -10,7 +10,7 @@
     <meta name="description" content="{{ config('app.name') }} Admin Panel">
     <meta name="author" content="Sivar Sarkawt">
 
-    <title>{{ config('app.name') }} | Admin Panel</title>
+    <title>{{ config('app.name') }} | IOM</title>
 
     <link rel="apple-touch-icon" href="{{ asset('remark/mmenu/assets/images/apple-touch-icon.png') }}">
     <link rel="shortcut icon" href="{{ asset('remark/mmenu/assets/images/favicon.ico') }}">
@@ -76,15 +76,12 @@
 
     <div class="page">
 
-        @yield('page')
+        @yield('content')
 
     </div>
 
     <footer class="site-footer">
       <div class="site-footer-legal"> © {{ Carbon\Carbon::now()->format('Y') }} <a href="{{ config('app.url') }}">{{ config('app.name') }}</a></div>
-      <div class="site-footer-right">
-        Crafted with <i class="red-600 wb wb-heart"></i> by <a href="{{ config('datacenter.url') }}">{{ config('datacenter.name') }}</a>
-      </div>
     </footer>
     {{-- Core --}}
     <script src="{{ asset('remark/global/vendor/babel-external-helpers/babel-external-helpers.js') }}"></script>

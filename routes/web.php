@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/beneficiaries', 'BeneficiaryController@index')->name('beneficiaries.index');
+Route::get('/beneficiaries/datatable', 'BeneficiaryController@datatable')->name('beneficiaries.datatable');
