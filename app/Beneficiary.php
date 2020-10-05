@@ -36,4 +36,9 @@ class Beneficiary extends Model
     {
         return $this->hasOne(Approval::class);
     }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class);
+    }
 }

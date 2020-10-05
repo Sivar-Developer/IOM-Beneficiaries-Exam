@@ -101,4 +101,9 @@ class BeneficiaryController extends Controller
             return redirect()->route('beneficiaries.index')->with('error','Unauthorized action due to incorrect credentials');
         }
     }
+
+    public function services(Beneficiary $beneficiary)
+    {
+        return view('beneficiaries.services', compact('beneficiary'));
+    }
 }

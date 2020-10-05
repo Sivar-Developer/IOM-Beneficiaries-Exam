@@ -24,3 +24,4 @@ Route::get('datatable/beneficiaries', 'BeneficiaryController@datatable')->name('
 Route::resource('/beneficiaries', 'BeneficiaryController');
 Route::patch('/beneficiaries/{beneficiary}/approved', 'ApprovalController@storeApprove')->name('beneficiaries.store.approved');
 Route::patch('/beneficiaries/{beneficiary}/rejected', 'ApprovalController@storeReject')->name('beneficiaries.store.rejected');
+Route::get('/beneficiaries/{beneficiary}/services', 'BeneficiaryController@services')->name('beneficiaries.services.index');

@@ -91,6 +91,7 @@ $(document).ready( function () {
               return `<a href="/beneficiaries/${data}" class="btn btn-sm btn-light"><i class="icon wb-eye"></i></a>
                     <a href="/beneficiaries/${data}/edit" class="btn btn-sm btn-light"><i class="icon wb-pencil"></i></a>
                     <button type="button" class="btn btn-sm btn-danger" title="Delete Beneficiary Permanently" data-target=".delete${data}" data-toggle="modal"><i class="icon wb-trash" aria-hidden="true"></i></button>
+                    <a href="/beneficiaries/${data}/services" class="btn btn-sm btn-light" title="Services"><i class="icon wb-settings"></i></a>
                     `
             }
           }
