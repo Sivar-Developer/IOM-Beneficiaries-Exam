@@ -9,6 +9,11 @@ use App\Http\Requests\RejectApprovalRequest;
 
 class ApprovalController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function storeApprove(Beneficiary $beneficiary)
     {
         Approval::updateOrCreate(

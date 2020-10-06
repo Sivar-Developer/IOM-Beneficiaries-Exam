@@ -11,7 +11,7 @@
                     <h3 class="panel-title">Services of Beneficiary #{{ $beneficiary->id }}: {{ $beneficiary->name }}</h3>
                 </div>
                 <div class="panel-body">
-                    <form action="#" method="POST" class="form-horizontal">
+                    <form action="{{ route('beneficiaries.services.attach', $beneficiary->id) }}" method="POST" class="form-horizontal">
                         @csrf
                         @method('PATCH')
                         @foreach(App\Service::all() as $service)

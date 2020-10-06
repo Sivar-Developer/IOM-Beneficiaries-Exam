@@ -26,7 +26,7 @@
                     @empty
                     <div class="col-sm-12 mb-20 font-weight-600 text-center">No Service Attached</div>
                     @endforelse
-                    <a href="#" class="btn btn-light">Edit Services</a>
+                    <a href="{{ route('beneficiaries.services.index', $beneficiary->id) }}" class="btn btn-light">Edit Services</a>
                 </div>
             </div>
             <div class="panel">

@@ -25,3 +25,4 @@ Route::resource('/beneficiaries', 'BeneficiaryController');
 Route::patch('/beneficiaries/{beneficiary}/approved', 'ApprovalController@storeApprove')->name('beneficiaries.store.approved');
 Route::patch('/beneficiaries/{beneficiary}/rejected', 'ApprovalController@storeReject')->name('beneficiaries.store.rejected');
 Route::get('/beneficiaries/{beneficiary}/services', 'BeneficiaryController@services')->name('beneficiaries.services.index');
+Route::patch('/beneficiaries/{beneficiary}/services/attach', 'ServiceController@attach')->name('beneficiaries.services.attach');

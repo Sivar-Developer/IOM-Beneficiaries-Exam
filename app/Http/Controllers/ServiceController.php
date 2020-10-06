@@ -3,83 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use App\Beneficiary;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        return $this->middleware('auth');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    
+    public function attach(Request $request, Beneficiary $beneficiary)
     {
-        //
-    }
+        if(request('training_session') || request('training_session')) { $beneficiary->services()->detach(); }
+        request('training_session') ? $beneficiary->services()->attach(1, ['mark' => request('training_session')]) : null;
+        request('shelter_rehabilitation') ? $beneficiary->services()->attach(2, ['mark' => request('shelter_rehabilitation')]) : null;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Service $service)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Service $service)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Service $service)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Service $service)
-    {
-        //
+        return redirect()->route('beneficiaries.show', $beneficiary->id)->with('msg', 'Beneficiary ('.$beneficiary->name.') services has been attached.');
     }
 }
