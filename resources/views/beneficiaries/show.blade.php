@@ -13,13 +13,14 @@
                 </div>
                 <div class="panel-body">
                     @forelse($beneficiary->services as $service)
+                    <hr>
                     <div class="row">
                         <div class="col-sm-3 mb-20 font-weight-600">Service:</div>
                         <div class="col-sm-3 mb-20">{{ $service->type }}</div>
-                        <div class="col-sm-3 mb-20 font-weight-600">Status:</div>
-                        <div class="col-sm-3 mb-20">{{ $service->pivot->mark }}</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Created At: </div>
                         <div class="col-sm-3 mb-20">{{ $service->pivot->created_at }}</div>
+                        <div class="col-sm-3 mb-20 font-weight-600">Status:</div>
+                        <div class="col-sm-3 mb-20">{{ $service->pivot->mark }}</div>
                         <div class="col-sm-3 mb-20 font-weight-600">Updated At:</div>
                         <div class="col-sm-3 mb-20">{{ $service->pivot->updated_at }}</div>
                     </div>
