@@ -70,7 +70,11 @@ $(document).ready( function () {
             data: 'photoPath',
             orderable: false,
             render: function (data) {
-              return `<img src="${data}" class="img-fluid avatar" />`
+                if(data != null) {
+                    return `<img src="${data}" class="img-fluid avatar" />`
+                } else {
+                    return null;
+                }
             }
           },
           {data: 'name', name: 'name'},
