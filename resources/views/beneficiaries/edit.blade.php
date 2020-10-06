@@ -1,5 +1,9 @@
 @extends('layouts.application')
 
+@push('head')
+@include('layouts.modules.file-upload.head')
+@endpush
+
 @section('content')
 <div class="page-content">
     <h1 class="page-title">Beneficiaries</h1>
@@ -25,14 +29,12 @@
                         </div>
                         <div class="form-group row">
                             <label for="gender" class="col-3 form-control-label{{ $errors->has('gender') ? ' text-danger' : '' }}">Gender</label>
+                            @foreach(['Male','Female'] as $gender)
                             <div class="col-2 radio-custom radio-primary">
-                                <input type="radio" id="genderUnchecked" name="gender" value="1" {{ (old('gender') ? old('gender') : $beneficiary->gender) == true ? 'checked' : '' }} />
-                                <label for="genderUnchecked">Male</label>
+                                <input type="radio" id="{{ $gender }}" name="gender" value="{{ $gender }}" {{ (old('gender') ? old('gender') : $beneficiary->gender) == $gender ? 'checked' : '' }} />
+                                <label for="{{ $gender }}">{{ $gender }}</label>
                             </div>
-                            <div class="col-3 radio-custom radio-primary">
-                                <input type="radio" id="genderChecked" name="gender" value="0" {{ (old('gender') ? old('gender') : $beneficiary->gender) == false ? 'checked' : '' }} />
-                                <label for="genderChecked">Female</label>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="form-group row">
                             <label for="phone_number" class="col-3 form-control-label{{ $errors->has('phone_number') ? ' text-danger' : '' }}">Phone Number</label>
@@ -48,28 +50,32 @@
                         </div>
                         <div class="form-group row">
                             <label for="martial_status" class="col-3 form-control-label{{ $errors->has('martial_status') ? ' text-danger' : '' }}">Martial Status</label>
-                                <select class="col-9 form-control round{{ $errors->has('martial_status') ? ' is-invalid' : '' }}" name="martial_status">
-                                    @foreach(['Single','Married','Divorced'] as $status)
-                                        <option value="{{ $status }}" {{ (old('martial_status') ? old('martial_status') : $beneficiary->martial_status) == $status ? 'selected' : '' }}>{{ $status }}</option>
-                                    @endforeach
-                                </select>
+                            <select class="col-9 form-control round{{ $errors->has('martial_status') ? ' is-invalid' : '' }}" name="martial_status">
+                                @foreach(['Single','Married','Divorced'] as $status)
+                                    <option value="{{ $status }}" {{ (old('martial_status') ? old('martial_status') : $beneficiary->martial_status) == $status ? 'selected' : '' }}>{{ $status }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group row">
                             <label for="employment_status" class="col-3 form-control-label{{ $errors->has('employment_status') ? ' text-danger' : '' }}">Employment Status</label>
-                            <div class="col-2 radio-custom radio-primary">
-                                <input type="radio" id="employment_statusUnchecked" name="employment_status" value="1" {{ (old('employment_status') ? old('employment_status') : $beneficiary->employment_status) == true ? 'checked' : '' }} />
-                                <label for="employment_statusUnchecked">Employed</label>
-                            </div>
+                            @foreach(['Employed','Un-Employed'] as $status)
                             <div class="col-3 radio-custom radio-primary">
-                                <input type="radio" id="employment_statusChecked" name="employment_status" value="0" {{ (old('employment_status') ? old('employment_status') : $beneficiary->employment_status) == false ? 'checked' : '' }} />
-                                <label for="employment_statusChecked">Un-Employed</label>
+                                <input type="radio" id="employment_status_{{ $status }}" name="employment_status" value="{{ $status }}" {{ (old('employment_status') ? old('employment_status') : $beneficiary->employment_status) == true ? 'checked' : '' }} />
+                                <label for="employment_status_{{ $status }}">{{ $status }}</label>
                             </div>
+                            @endforeach
                         </div>
                         <div class="form-group row">
                             <label for="monthly_income" class="col-3 form-control-label{{ $errors->has('monthly_income') ? ' text-danger' : '' }}">Monthly Income</label>
                             <div class="input-group round col-9">
                                 <span class="input-group-addon round">$</span>
                                 <input type="number" min="0" step="0.01" class="form-control round{{ $errors->has('monthly_income') ? ' is-invalid' : '' }}" name="monthly_income" value="{{ old('monthly_income') ? old('monthly_income') : $beneficiary->monthly_income }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="photo" class="col-3 form-control-label{{ $errors->has('photo') ? ' text-danger' : '' }}">Profile Photo</label>
+                            <div class="col-9">
+                                <input name="photo" type="file" id="input-file-now" data-plugin="dropify" data-default-file="{{ $beneficiary->photo }}" />
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect waves-classic"><b>Update</b></button>
@@ -81,3 +87,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+@include('layouts.modules.file-upload.scripts')
+@endpush

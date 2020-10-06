@@ -20,6 +20,6 @@ $factory->define(Beneficiary::class, function (Faker $faker) {
         'martial_status' => $martial_status,
         'employment_status' => $faker->randomElement([1,0]),
         'monthly_income' => $faker->randomFloat($nbMaxDecimals = 2, $min = 500, $max = 2000),
-        'photo' => $faker->imageUrl($width = 500, $height = 500)
+        'photo' => $faker->imageUrl($width = 500, $height = 500).'.jpeg'
     ];
 });
