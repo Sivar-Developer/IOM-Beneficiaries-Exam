@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @include('layouts.partials.alert')
             <div class="card">
                 <div class="card-header">{{ __('Beneficiaries List') }}</div>
 
@@ -69,7 +70,6 @@ $(document).ready( function () {
             data: 'photoPath',
             orderable: false,
             render: function (data) {
-              console.log(data)
               return `<img src="${data}" class="img-fluid avatar" />`
             }
           },
@@ -87,7 +87,6 @@ $(document).ready( function () {
             data: 'id',
             orderable: false,
             render: function (data) {
-              console.log(data)
               return `<a href="/beneficiaries/${data}" class="btn btn-sm btn-light"><i class="icon wb-eye"></i></a>
                     <a href="/beneficiaries/${data}/edit" class="btn btn-sm btn-light"><i class="icon wb-pencil"></i></a>
                     <button type="button" class="btn btn-sm btn-danger" title="Delete Beneficiary Permanently" data-target=".delete${data}" data-toggle="modal"><i class="icon wb-trash" aria-hidden="true"></i></button>

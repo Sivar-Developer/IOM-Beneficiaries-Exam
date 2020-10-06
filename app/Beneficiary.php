@@ -12,7 +12,7 @@ class Beneficiary extends Model
 
     public function getPhotoPathAttribute()
     {
-        return Str::startsWith($this->photo, 'https://') ? $this->photo : config('app.url').'/contents/photos/'.$this->photo;
+        return $this->photo ? (Str::startsWith($this->photo, 'https://') ? $this->photo : config('app.url').'/contents/photos/'.$this->photo) : NULL;
     }
 
     public function getScoreAttribute()

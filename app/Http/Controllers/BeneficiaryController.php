@@ -49,15 +49,18 @@ class BeneficiaryController extends Controller
      */
     public function store(Request $request)
     {
+        $filename = NULL;
+        
         if ($request->hasFile('photo'))
         {
             $file=request()->file('photo');
             $filename=uniqid().'.'.$file->guessClientExtension();
             $moved = $file->move('contents/photos', $filename);
             $path=public_path().'/contents/photos/'.$filename;
-            $data = $request->except('photo');
-            $data['photo'] = $filename;
         }
+
+        $data = $request->except('photo');
+        $data['photo'] = $filename;
 
         Beneficiary::create($data);
 
@@ -95,15 +98,17 @@ class BeneficiaryController extends Controller
      */
     public function update(Request $request, Beneficiary $beneficiary)
     {
+        $filename = NULL;
         if ($request->hasFile('photo'))
         {
             $file=request()->file('photo');
             $filename=uniqid().'.'.$file->guessClientExtension();
             $moved = $file->move('contents/photos', $filename);
             $path=public_path().'/contents/photos/'.$filename;
-            $data = $request->except('photo');
-            $data['photo'] = $filename;
         }
+
+        $data = $request->except('photo');
+        $data['photo'] = $filename;
 
         $beneficiary->update($data);
 
