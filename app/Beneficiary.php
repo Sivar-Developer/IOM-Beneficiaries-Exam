@@ -3,11 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Beneficiary extends Model
 {
     protected $guarded = [];
-    protected $appends = ['score','age','employment'];
+    protected $appends = ['score','age','employment','photoPath'];
+
+    public function getPhotoPathAttribute()
+    {
+        return Str::startsWith($this->photo, 'https://') ? $this->photo : config('app.url').'/contents/photos/'.$this->photo;
+    }
 
     public function getScoreAttribute()
     {

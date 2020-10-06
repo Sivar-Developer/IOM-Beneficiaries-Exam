@@ -83,7 +83,19 @@ class BeneficiaryController extends Controller
      */
     public function update(Request $request, Beneficiary $beneficiary)
     {
-        //
+        if ($request->hasFile('photo'))
+        {
+            $file=request()->file('photo');
+            $filename=uniqid().'.'.$file->guessClientExtension();
+            $moved = $file->move('contents/photos', $filename);
+            $path=public_path().'/contents/photos/'.$filename;
+            $data = $request->except('photo');
+            $data['photo'] = $filename;
+        }
+
+        $beneficiary->update($data);
+
+        return redirect()->back()->with('msg', 'Beneficiary ('.$beneficiary->name.') has been updated successfully');
     }
 
     /**

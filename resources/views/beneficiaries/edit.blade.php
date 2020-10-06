@@ -16,7 +16,7 @@
                     <h3 class="panel-title">Edit Beneficiary</h3>
                 </div>
                 <div class="panel-body">
-                    <form action="{{ route('beneficiaries.update', $beneficiary->id) }}" method="POST" class="form-horizontal">
+                    <form action="{{ route('beneficiaries.update', $beneficiary->id) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="form-group row">
@@ -60,7 +60,7 @@
                             <label for="employment_status" class="col-3 form-control-label{{ $errors->has('employment_status') ? ' text-danger' : '' }}">Employment Status</label>
                             @foreach(['Employed','Un-Employed'] as $status)
                             <div class="col-3 radio-custom radio-primary">
-                                <input type="radio" id="employment_status_{{ $status }}" name="employment_status" value="{{ $status }}" {{ (old('employment_status') ? old('employment_status') : $beneficiary->employment_status) == true ? 'checked' : '' }} />
+                                <input type="radio" id="employment_status_{{ $status }}" name="employment_status" value="{{ $loop->index == 0 ? true : false }}" {{ (old('employment_status') ? old('employment_status') : $beneficiary->employment_status) == $status ? 'checked' : '' }} />
                                 <label for="employment_status_{{ $status }}">{{ $status }}</label>
                             </div>
                             @endforeach
@@ -75,7 +75,7 @@
                         <div class="form-group row">
                             <label for="photo" class="col-3 form-control-label{{ $errors->has('photo') ? ' text-danger' : '' }}">Profile Photo</label>
                             <div class="col-9">
-                                <input name="photo" type="file" id="input-file-now" data-plugin="dropify" data-default-file="{{ $beneficiary->photo }}" />
+                                <input name="photo" type="file" id="input-file-now" data-plugin="dropify" data-default-file="{{ $beneficiary->photoPath }}" />
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect waves-classic"><b>Update</b></button>

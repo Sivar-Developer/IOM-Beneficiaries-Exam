@@ -66,7 +66,7 @@ $(document).ready( function () {
       columns: [
           {data: 'id', name: 'id'},
           {
-            data: 'photo',
+            data: 'photoPath',
             orderable: false,
             render: function (data) {
               console.log(data)

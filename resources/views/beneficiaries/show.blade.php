@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-sm-3 mb-20 font-weight-600">Photo:</div>
                         <div class="col-sm-9 mb-20">
-                            <img src="{{ $beneficiary->photo }}" class="img-rounded img-bordered img-fluid" width="200" alt="">
+                            <img src="{{ $beneficiary->photoPath }}" class="img-rounded img-bordered img-fluid" width="200" alt="">
                         </div>
                         <div class="col-sm-3 mb-20 font-weight-600">Name:</div>
                         <div class="col-sm-9 mb-20">{{ $beneficiary->name }}</div>
