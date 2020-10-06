@@ -9,6 +9,28 @@
             @include('beneficiaries.approval', $beneficiary)
             <div class="panel">
                 <div class="panel-heading">
+                    <h3 class="panel-title">Beneficiary Services</h3>
+                </div>
+                <div class="panel-body">
+                    @forelse($beneficiary->services as $service)
+                    <div class="row">
+                        <div class="col-sm-3 mb-20 font-weight-600">Service:</div>
+                        <div class="col-sm-3 mb-20">{{ $service->type }}</div>
+                        <div class="col-sm-3 mb-20 font-weight-600">Status:</div>
+                        <div class="col-sm-3 mb-20">{{ $service->pivot->mark }}</div>
+                        <div class="col-sm-3 mb-20 font-weight-600">Created At: </div>
+                        <div class="col-sm-3 mb-20">{{ $service->pivot->created_at }}</div>
+                        <div class="col-sm-3 mb-20 font-weight-600">Updated At:</div>
+                        <div class="col-sm-3 mb-20">{{ $service->pivot->updated_at }}</div>
+                    </div>
+                    @empty
+                    <div class="col-sm-12 mb-20 font-weight-600 text-center">No Service Attached</div>
+                    @endforelse
+                    <a href="#" class="btn btn-light">Edit Services</a>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">
                     <h3 class="panel-title">Beneficiary Detail</h3>
                 </div>
                 <div class="panel-body">

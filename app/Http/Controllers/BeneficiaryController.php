@@ -50,7 +50,7 @@ class BeneficiaryController extends Controller
     public function store(Request $request)
     {
         $filename = NULL;
-        
+
         if ($request->hasFile('photo'))
         {
             $file=request()->file('photo');
@@ -75,6 +75,7 @@ class BeneficiaryController extends Controller
      */
     public function show(Beneficiary $beneficiary)
     {
+        // dd($beneficiary->services);
         return view('beneficiaries.show', compact('beneficiary'));
     }
 

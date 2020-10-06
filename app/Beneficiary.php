@@ -45,6 +45,6 @@ class Beneficiary extends Model
 
     public function services()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->belongsToMany(Service::class)->withPivot('mark','created_at','updated_at');
     }
 }

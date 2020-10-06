@@ -76,7 +76,7 @@
                                 <input name="photo" type="file" id="input-file-now" data-plugin="dropify" />
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary waves-effect waves-classic"><b>Update</b></button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-classic"><b>Add</b></button>
                         <a href="{{ route('beneficiaries.index') }}" class="btn btn-default waves-effect waves-classic"><b>Back</b></a>
                     </form>
                 </div>
