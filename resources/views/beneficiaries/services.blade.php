@@ -18,15 +18,15 @@
                         <div class="form-group row">
                             <label for="{{ $service->type }}" class="col-3 form-control-label{{ $errors->has($service->type) ? ' text-danger' : '' }}">{{ $service->type }}</label>
                             <div class="col-3 radio-custom radio-primary">
-                                <input type="radio" id="{{ $service->type }}Ongoing" name="{{ Str::snake($service->type) }}" value="Ongoing" {{ $beneficiary->services()->find($service->id)->pivot->mark == 'Ongoing' ? 'checked' : null }} />
+                                <input type="radio" id="{{ $service->type }}Ongoing" name="{{ Str::snake($service->type) }}" value="Ongoing" {{ ($beneficiary->services()->find($service->id) ? $beneficiary->services()->find($service->id)->pivot->mark : null) == 'Ongoing' ? 'checked' : null }} />
                                 <label for="{{ $service->type }}Ongoing">Ongoing</label>
                             </div>
                             <div class="col-3 radio-custom radio-primary">
-                                <input type="radio" id="{{ $service->type }}Cancelled" name="{{ Str::snake($service->type) }}" value="Cancelled" {{ $beneficiary->services()->find($service->id)->pivot->mark == 'Cancelled' ? 'checked' : null }} />
+                                <input type="radio" id="{{ $service->type }}Cancelled" name="{{ Str::snake($service->type) }}" value="Cancelled" {{ ($beneficiary->services()->find($service->id) ? $beneficiary->services()->find($service->id)->pivot->mark : null) == 'Cancelled' ? 'checked' : null }} />
                                 <label for="{{ $service->type }}Cancelled">Cancelled</label>
                             </div>
                             <div class="col-3 radio-custom radio-primary">
-                                <input type="radio" id="{{ $service->type }}Delivered" name="{{ Str::snake($service->type) }}" value="Delivered" {{ $beneficiary->services()->find($service->id)->pivot->mark == 'Delivered' ? 'checked' : null }} />
+                                <input type="radio" id="{{ $service->type }}Delivered" name="{{ Str::snake($service->type) }}" value="Delivered" {{ ($beneficiary->services()->find($service->id) ? $beneficiary->services()->find($service->id)->pivot->mark : null) == 'Delivered' ? 'checked' : null }} />
                                 <label for="{{ $service->type }}Delivered">Delivered</label>
                             </div>
                         </div>
