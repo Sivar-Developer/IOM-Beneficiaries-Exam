@@ -28,3 +28,4 @@ Route::get('/beneficiaries/{beneficiary}/services', 'BeneficiaryController@servi
 Route::patch('/beneficiaries/{beneficiary}/services/attach', 'ServiceController@attach')->name('beneficiaries.services.attach');
 Route::get('/export/beneficiaries', 'BeneficiaryController@export')->name('export.beneficiaries');
 Route::post('/import/beneficiaries', 'BeneficiaryController@import')->name('import.beneficiaries');
+Route::delete('/destroy/beneficiaries', 'BeneficiaryController@bulkDestroy')->name('beneficiaries.destroy.bulk');

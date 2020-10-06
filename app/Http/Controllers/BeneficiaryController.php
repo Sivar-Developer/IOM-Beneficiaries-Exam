@@ -135,6 +135,13 @@ class BeneficiaryController extends Controller
         }
     }
 
+    public function bulkDestroy(Request $request)
+    {
+        Beneficiary::destroy(request('ids'));
+
+        return redirect()->route('beneficiaries.index')->with('msg','Beneficiaries has been Deleted');
+    }
+
     public function services(Beneficiary $beneficiary)
     {
         return view('beneficiaries.services', compact('beneficiary'));
