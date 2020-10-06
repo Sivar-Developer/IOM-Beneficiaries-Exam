@@ -1,5 +1,9 @@
 @extends('layouts.application')
 
+@push('head')
+@include('layouts.modules.file-upload.head')
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -21,6 +25,10 @@
                           <h3 class="panel-title">List of Beneficiaries</h3>
                         </header>
                         <div class="panel-body">
+                          <div class="button-group mb-10 ml-15">
+                            <a href="{{ route('export.beneficiaries') }}" class="btn btn-default">Excel Export</a>
+                            <button class="btn btn-default" data-target=".import-modal" data-toggle="modal" >Excel Import</button>
+                          </div>
                           <table class="table table-hover dataTable table-striped w-full" id="beneficiaries-table">
                             <thead>
                               <tr>
@@ -48,6 +56,8 @@
     </div>
 </div>
 
+    @include('beneficiaries.import')
+
     @foreach(\App\Beneficiary::all() as $beneficiary)
         @include('beneficiaries.delete', $beneficiary)
     @endforeach
@@ -55,7 +65,7 @@
 @endsection
 
 @push('scripts')
-@include('layouts.modules.tabs-accordions.scripts')
+@include('layouts.modules.file-upload.scripts')
 @include('layouts.modules.datatable.scripts')
 <script>
 $(document).ready( function () {

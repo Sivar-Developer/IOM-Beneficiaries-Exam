@@ -26,3 +26,5 @@ Route::patch('/beneficiaries/{beneficiary}/approved', 'ApprovalController@storeA
 Route::patch('/beneficiaries/{beneficiary}/rejected', 'ApprovalController@storeReject')->name('beneficiaries.store.rejected');
 Route::get('/beneficiaries/{beneficiary}/services', 'BeneficiaryController@services')->name('beneficiaries.services.index');
 Route::patch('/beneficiaries/{beneficiary}/services/attach', 'ServiceController@attach')->name('beneficiaries.services.attach');
+Route::get('/export/beneficiaries', 'BeneficiaryController@export')->name('export.beneficiaries');
+Route::post('/import/beneficiaries', 'BeneficiaryController@import')->name('import.beneficiaries');
