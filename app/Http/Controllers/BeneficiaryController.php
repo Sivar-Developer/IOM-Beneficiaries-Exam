@@ -49,7 +49,19 @@ class BeneficiaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile('photo'))
+        {
+            $file=request()->file('photo');
+            $filename=uniqid().'.'.$file->guessClientExtension();
+            $moved = $file->move('contents/photos', $filename);
+            $path=public_path().'/contents/photos/'.$filename;
+            $data = $request->except('photo');
+            $data['photo'] = $filename;
+        }
+
+        Beneficiary::create($data);
+
+        return redirect()->route('beneficiaries.index')->with('msg', 'Beneficiary ('.request('name').') has been updated successfully');
     }
 
     /**
