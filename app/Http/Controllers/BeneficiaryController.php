@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use DataTables;
 use Hash;
 use Auth;
+use App\Exports\BeneficiaryExport;
+use App\Imports\BeneficiaryImport;
+use Excel;
 
 class BeneficiaryController extends Controller
 {
@@ -135,5 +138,17 @@ class BeneficiaryController extends Controller
     public function services(Beneficiary $beneficiary)
     {
         return view('beneficiaries.services', compact('beneficiary'));
+    }
+
+    public function export() 
+    {
+        return Excel::download(new BeneficiaryExport, 'beneficiaries.xlsx');
+    }
+
+    public function import()
+    {
+        Excel::import(new BeneficiaryImport, request()->file('attachment'));
+
+        return redirect()->back()->with('msg', 'Beneficiaries Imported to the database successfully.');
     }
 }
