@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Beneficiary;
 use Illuminate\Http\Request;
+use App\Http\Requests\BeneficiaryStoreRequest;
+use App\Http\Requests\BeneficiaryUpdateRequest;
 use DataTables;
 use Hash;
 use Auth;
@@ -50,7 +52,7 @@ class BeneficiaryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BeneficiaryStoreRequest $request)
     {
         $filename = NULL;
 
@@ -100,7 +102,7 @@ class BeneficiaryController extends Controller
      * @param  \App\Beneficiary  $beneficiary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Beneficiary $beneficiary)
+    public function update(BeneficiaryUpdateRequest $request, Beneficiary $beneficiary)
     {
         $filename = NULL;
         if ($request->hasFile('photo'))
