@@ -6,6 +6,7 @@ use App\Beneficiary;
 use Illuminate\Http\Request;
 use App\Http\Requests\BeneficiaryStoreRequest;
 use App\Http\Requests\BeneficiaryUpdateRequest;
+use App\Http\Requests\BeneficiaryImportRequest;
 use DataTables;
 use Hash;
 use Auth;
@@ -160,7 +161,7 @@ class BeneficiaryController extends Controller
         return Excel::download(new BeneficiaryExport, 'beneficiaries.xlsx');
     }
 
-    public function import()
+    public function import(BeneficiaryImportRequest $request)
     {
         Excel::import(new BeneficiaryImport, request()->file('attachment'));
 
