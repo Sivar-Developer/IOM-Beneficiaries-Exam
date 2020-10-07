@@ -58,7 +58,7 @@
                             <label for="employment_status" class="col-3 form-control-label{{ $errors->has('employment_status') ? ' text-danger' : '' }}">Employment Status</label>
                             @foreach(['Employed','Un-Employed'] as $status)
                             <div class="col-3 radio-custom radio-primary">
-                                <input type="radio" id="employment_status_{{ $status }}" name="employment_status" value="{{ $loop->index == 0 ? true : false }}" {{ old('employment_status') == $status ? 'checked' : '' }} />
+                                <input type="radio" id="employment_status_{{ $status }}" name="employment_status" value="{{ $status == 'Employed' ? 1 : 0 }}" {{ (old('employment_status') == 1 ? 'Employed' : 'Un-Employed') == $status ? 'checked' : '' }} />
                                 <label for="employment_status_{{ $status }}">{{ $status }}</label>
                             </div>
                             @endforeach
