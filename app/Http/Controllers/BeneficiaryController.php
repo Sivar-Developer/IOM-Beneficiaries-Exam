@@ -139,6 +139,8 @@ class BeneficiaryController extends Controller
 
     public function bulkDestroy(Request $request)
     {
+        $this->validate($request, ['ids' => 'required'],['ids.required' => 'Please select the beneficiaries to delete.']);
+
         Beneficiary::destroy(request('ids'));
 
         return redirect()->route('beneficiaries.index')->with('msg','Beneficiaries has been Deleted');
