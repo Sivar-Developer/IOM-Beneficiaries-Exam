@@ -65,7 +65,9 @@ class BeneficiaryController extends Controller
         }
 
         $data = $request->except('photo');
-        $data['photo'] = $filename;
+        if($filename) {
+            $data['photo'] = $filename;
+        }
 
         Beneficiary::create($data);
 
@@ -114,7 +116,9 @@ class BeneficiaryController extends Controller
         }
 
         $data = $request->except('photo');
-        $data['photo'] = $filename;
+        if($filename) {
+            $data['photo'] = $filename;
+        }
 
         $beneficiary->update($data);
 
