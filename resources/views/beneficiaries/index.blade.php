@@ -30,7 +30,7 @@
                             @method('DELETE')
                             <div class="button-group mb-10 ml-15">
                               <a href="{{ route('export.beneficiaries') }}" class="btn btn-default">Excel Export</a>
-                              <button class="btn btn-default" data-target=".import-modal" data-toggle="modal" >Excel Import</button>
+                              <a href="#" class="btn btn-default" data-target=".import-modal" data-toggle="modal">Excel Import</a>
                               <button type="submit" class="btn btn-danger">Bulk Delete</button>
                             </div>
                             <table class="table table-hover dataTable table-striped w-full" id="beneficiaries-table">
